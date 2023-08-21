@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap'); 
 
 
+*{
+    padding: 0;
+    margin: 0;
+}
 body
 {
   font-family: 'Source Code Pro';
@@ -58,10 +62,6 @@ body
   border:2px solid #fff;
 }
 
-*{
-    padding: 0;
-    margin: 0;
-}
 .container{
   text-align: center;
   position: absolute;

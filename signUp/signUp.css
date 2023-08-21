@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap'); 
 
 *{
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 body
 {
-  display: flex;
   font-family: 'Source Code Pro';
   font-style: normal;
   font-weight: 200;
@@ -15,8 +14,6 @@ body
   overflow: hidden;
   background: #232323;
 }
-
-
 .header
 {
   display: flex;
@@ -43,7 +40,7 @@ body
 .container
 {
   width: 90%;
-  height: 35%;
+  height: 55%;
   max-width:320px;;
   position: absolute;
   top: 50%;
@@ -78,14 +75,14 @@ body
   outline: 0;
   padding: 20px 18px;
 }
-.input-box ::placeholder
-{
-  color: #232323;
-}
 .input-box i
 {
   padding:0 0 0 10px;
 
+}
+.input-box ::placeholder
+{
+  color: #232323;
 }
 .input-box img
 {
@@ -98,74 +95,62 @@ body
   cursor: pointer;
 }
 input:focus {
-  &::-webkit-input-placeholder {
-     color: transparent;
-     -webkit-transition: color 0.2s ease;
-     transition: color 0.2s ease;
-  }
-
-   &:-moz-placeholder { /* Firefox 18- */
-     color: transparent;
-     -webkit-transition: color 0.2s ease;
-     transition: color 0.2s ease;
-  }
-
-  &::-moz-placeholder {  /* Firefox 19+ */
-     color: transparent;
-     -webkit-transition: color 0.2s ease;
-     transition: color 0.2s ease; 
-  }
-
-  &:-ms-input-placeholder {  
-     color: transparent;
-     -webkit-transition: color 0.2s ease;
-     transition: color 0.2s ease;
-  }
+    &::-webkit-input-placeholder {
+       color: transparent;
+       -webkit-transition: color 0.2s ease;
+       transition: color 0.2s ease;
+    }
+  
+     &:-moz-placeholder { /* Firefox 18- */
+       color: transparent;
+       -webkit-transition: color 0.2s ease;
+       transition: color 0.2s ease;
+    }
+  
+    &::-moz-placeholder {  /* Firefox 19+ */
+       color: transparent;
+       -webkit-transition: color 0.2s ease;
+       transition: color 0.2s ease; 
+    }
+  
+    &:-ms-input-placeholder {  
+       color: transparent;
+       -webkit-transition: color 0.2s ease;
+       transition: color 0.2s ease;
+    }
 }
-.signIn-btn
+.signUp-btn
 {
   display: flex;
   justify-content: space-around;
+  align-items: center; 
+  /* justify-content: center; */
 }
-.signIn-btn button
+.signUp-btn button
 {
-  justify-content: center;
-  width: 30%;
-  height: 25%;
-  padding: 9px 6px;
-  border: 0;
-  border-radius: 20px;
+    justify-content: center;
+    width: 30%;
+    height: 25%;
+    padding: 9px 6px;
+    border: 0;
+    border-radius: 20px;
 }
-.signIn-btn button:hover
+.signUp-btn button:hover
 {
   cursor: pointer;
   color: #fff;
   background-color: #232323;
 }
-.signIn-btn p
-{
-  color:black;
-  font-size: 18px;
-  font-weight: 600;
+.signUp-btn p{
+    font-size: 15px;
+    font-weight: 600;
 }
-.signIn-btn p:hover
+.signUp-btn p:hover
 {
   color: #fff;
   cursor: pointer;
-}
-.new-account
-{
-  display: flex;
-  padding-top: 10px;
-  justify-content:center;
-  font-weight: 600;
-}
-.new-account p:hover
-{
-  cursor: pointer;
-  color: #fff;
 }
 .hidden
 {
   display: none;
-} 
+}
