@@ -17,7 +17,7 @@ body
 .header
 {
   display: flex;
-  padding: 10px;
+  padding: 20px 10px;
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
   background:rgba(255,255,255,0.30);  
@@ -67,20 +67,38 @@ body
 }
 .input-box img
 {
-  width: 33px;
-  height:25px;
-  padding-right:6px;
+  width: 20px;
+  height:17px;
+  padding-right:10px;
 }
-.show-passoword
+.input-box img:hover
 {
-  text-align: left;
-  padding-bottom:10px ;
+  cursor: pointer;
 }
-input.check-box
-{
-  height: 15px;
-  width: 15px;
-  
+input:focus {
+  &::-webkit-input-placeholder {
+     color: transparent;
+     -webkit-transition: color 0.2s ease;
+     transition: color 0.2s ease;
+  }
+
+   &:-moz-placeholder { /* Firefox 18- */
+     color: transparent;
+     -webkit-transition: color 0.2s ease;
+     transition: color 0.2s ease;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: transparent;
+     -webkit-transition: color 0.2s ease;
+     transition: color 0.2s ease; 
+  }
+
+  &:-ms-input-placeholder {  
+     color: transparent;
+     -webkit-transition: color 0.2s ease;
+     transition: color 0.2s ease;
+  }
 }
 .signIn-btn
 {
@@ -106,14 +124,26 @@ input.check-box
 {
   color:black;
   font-size: 18px;
+  font-weight: 600;
 }
 .signIn-btn p:hover
 {
   color: #fff;
-
+  cursor: pointer;
 }
-.new-account{
+.new-account
+{
   display: flex;
-  text-align: left;
+  padding-top: 10px;
+  justify-content:center;
+  font-weight: 600;
 }
-
+.new-account p:hover
+{
+  cursor: pointer;
+  color: #fff;
+}
+.hidden
+{
+  display: none;
+} 
