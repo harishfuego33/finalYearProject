@@ -23,7 +23,7 @@ body
   justify-content:start;
   text-align: left;
   width: 100%;
-  padding: 20px 0px;
+  padding: 18px 10px;
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
   background:rgba(255,255,255,0.30);  
@@ -33,12 +33,22 @@ body
 {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   color: #fff;
 } 
 .tag h2
 { 
-  padding: 10px 10px;
+  padding: 0px 10px;
+}
+.tag i
+{
+  padding: 10px 0px 10px 0px ;
+}
+.home:hover
+{
+  cursor: pointer;
+  color:#232323;
+  border-bottom: 2px solid #fff; 
 }
 .container
 {
