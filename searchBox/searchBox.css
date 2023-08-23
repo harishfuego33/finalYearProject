@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap'); 
 
 *{
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 body
 {
-  display: flex;
   font-family: 'Source Code Pro';
   font-style: normal;
   font-weight: 200;
@@ -15,14 +14,13 @@ body
   overflow: hidden;
   background: #232323;
 }
-
-
+/* -----------------------HEADERPART START----------------------- */
 .header
 {
   display: flex;
   justify-content:start;
   text-align: left;
-  width: 100%;
+  width: 100%;  
   padding: 18px 10px;
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
@@ -33,7 +31,7 @@ body
 {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color: #fff;
 } 
 .tag h2
@@ -50,64 +48,61 @@ body
   color:#232323;
   border-bottom: 2px solid #fff; 
 }
+/* -----------------------MID PART STARTS----------------------- */
+
 .container
 {
-  width: 90%;
-  height: 35%;
-  max-width:320px;;
+  width: 100%;
+  height: 30%;
+  max-width:600px;;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50% ,-50%);
-  padding: 50px 60px 70px ;
+  padding: 60px 10px ;
   text-align: center;
   border-radius: 20px;
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
-  background: rgba(255,255,255,0.30);
 }
 .container h2
 {
   font-size: 30px;
   margin-bottom: 20px;
   position: relative;
+  color: #fff;
 }
 .input-box
 {
-  background: #eaeaea;
-  margin: 15px 0;
-  border-radius: 15px;
-  display:flex;
-  align-items: center;
+    width: 100%;
+    height: 25%;
+    background:#ffffff;
+    display: flex;
+    margin: 15px 0;
+    align-items: center;
+    border-radius: 30px;
 }
-.input-box input
+input
 {
-  width:100%;
-  background: transparent;
-  border: 0;
-  outline: 0;
-  padding: 20px 18px;
+    width: 100%;
+    height: 30px;
+    border-radius: 30px;
+    border: 0;
+    outline: 0;
+    align-items: center;
+    padding:0 0 0 20px;
+}
+.input-box i
+{
+  width: 10px;
+  height: 10px;
+  color:black;  
+  padding:0 30px 0 0px;
+
 }
 .input-box ::placeholder
 {
   color: #232323;
   font-weight: 500;
   font-size: 15px;
-}
-.input-box i
-{
-  padding:0 0 0 10px;
-
-}
-.input-box img
-{
-  width: 20px;
-  height:17px;
-  padding-right:10px;
-}
-.input-box img:hover
-{
-  cursor: pointer;
 }
 input:focus {
   &::-webkit-input-placeholder {
@@ -134,50 +129,3 @@ input:focus {
      transition: color 0.2s ease;
   }
 }
-.signIn-btn
-{
-  display: flex;
-  justify-content: space-around;
-}
-.signIn-btn button
-{
-  justify-content: center;
-  width: 30%;
-  height: 25%;
-  padding: 9px 6px;
-  border: 0;
-  border-radius: 20px;
-}
-.signIn-btn button:hover
-{
-  cursor: pointer;
-  color: #fff;
-  background-color: #232323;
-}
-.signIn-btn p
-{
-  color:black;
-  font-size: 18px;
-  font-weight: 600;
-}
-.signIn-btn p:hover
-{
-  color: #fff;
-  cursor: pointer;
-}
-.new-account
-{
-  display: flex;
-  padding-top: 10px;
-  justify-content:center;
-  font-weight: 600;
-}
-.new-account p:hover
-{
-  cursor: pointer;
-  color: #fff;
-}
-.hidden
-{
-  display: none;
-} 

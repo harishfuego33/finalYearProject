@@ -14,6 +14,7 @@ body
   overflow: hidden;
   background: #232323;
 }
+/* -----------------------HEADERPART START----------------------- */
 .header
 {
   display: flex;
@@ -47,6 +48,8 @@ body
   color:#232323;
   border-bottom: 2px solid #fff; 
 }
+/* -----------------------HEADERPART ENDS----------------------- */
+/* -----------------------MID PART STARTS----------------------- */
 .container
 {
   width: 90%;
@@ -93,6 +96,8 @@ body
 .input-box ::placeholder
 {
   color: #232323;
+  font-weight: 500;
+  font-size: 15px;
 }
 .input-box img
 {
@@ -160,6 +165,7 @@ input:focus {
   color: #fff;
   cursor: pointer;
 }
+/* -----------------------MID PART ENDS----------------------- */
 .hidden
 {
   display: none;
