@@ -1,6 +1,9 @@
 const EmailField = document.querySelector('.EmailField');
 const passwordField = document.querySelector('.passwordField');
 const eyePng = document.querySelector('.eye-btn');
+const checker = document.querySelector('.checker');
+const submitBtn= document.querySelector('.submit-btn');
+const inputBox = document.querySelector('.input-box')
 let flag = true;
 passwordField.addEventListener('focus',function(){
   eyePng.classList.remove('hidden');
@@ -22,12 +25,18 @@ eyePng.addEventListener('click',function()
       passwordField.type = 'password';
     }
 })
-// if(passwordField.value.length==0&&!flag);
-// {
-//     document.addEventListener('click',function()
-//     {
-//       eyePng.classList.add('hidden'); 
-//     })
-// }
+submitBtn.addEventListener('click',function()
+{
+  if(EmailField.value=='harishkumar.ct20@bitsathy.ac.in'&&passwordField.value =='mayil@123')
+  {
+    window.location.href = '/searchBox/searchBox.html';
+  }
+  else
+  {
+    checker.classList.remove('hidden');
+    inputBox.classList.add('incorrect');
+    
+  }
+})
 
 

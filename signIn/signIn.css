@@ -53,7 +53,7 @@ body
 .container
 {
   width: 90%;
-  height: 35%;
+  height: 40%;
   max-width:320px;;
   position: absolute;
   top: 50%;
@@ -65,6 +65,8 @@ body
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
   background: rgba(255,255,255,0.30);
+  justify-content: center
+  ;
 }
 .container h2
 {
@@ -80,7 +82,7 @@ body
   display:flex;
   align-items: center;
 }
-.input-box input
+.EmailField,.passwordField
 {
   width:100%;
   background: transparent;
@@ -97,7 +99,7 @@ body
 .input-box i
 {
   padding:0 0 0 10px;
-
+  
 }
 .input-box img
 {
@@ -111,34 +113,46 @@ body
 }
 input:focus {
   &::-webkit-input-placeholder {
+    color: transparent;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
      color: transparent;
      -webkit-transition: color 0.2s ease;
      transition: color 0.2s ease;
-  }
-
-   &:-moz-placeholder { /* Firefox 18- */
-     color: transparent;
-     -webkit-transition: color 0.2s ease;
-     transition: color 0.2s ease;
-  }
-
-  &::-moz-placeholder {  /* Firefox 19+ */
-     color: transparent;
+    }
+    
+    &::-moz-placeholder {  /* Firefox 19+ */
+      color: transparent;
      -webkit-transition: color 0.2s ease;
      transition: color 0.2s ease; 
+    }
+    
+    &:-ms-input-placeholder {  
+      color: transparent;
+      -webkit-transition: color 0.2s ease;
+      transition: color 0.2s ease;
+    }
   }
-
-  &:-ms-input-placeholder {  
-     color: transparent;
-     -webkit-transition: color 0.2s ease;
-     transition: color 0.2s ease;
-  }
+.checker
+{
+  padding-bottom: 20px;
+  font-weight: 600;
+  color:red;
 }
+/* .incorrect
+{
+  border: 1px solid red ;
+} */
+
 .signIn-btn
 {
   display: flex;
   justify-content: space-around;
 }
+
 .signIn-btn button
 {
   justify-content: center;
