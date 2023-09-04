@@ -16,6 +16,7 @@ const openModalWithConfirm =function (flag)
 {
     if(flag == 'no')
     {
+        console.log('no');
         modal.classList.remove('hidden');
         overlay.classList.remove('hidden');
         container.classList.add('hidden');
@@ -26,6 +27,7 @@ const openModalWithConfirm =function (flag)
     }
     else if(flag==1)
     {
+        console.log(1);
         modal.classList.remove('hidden');
         overlay.classList.remove('hidden');
         container.classList.add('hidden');
@@ -35,6 +37,7 @@ const openModalWithConfirm =function (flag)
     }
     else if(flag==0)
     {
+        console.log(0);
         modal.classList.remove('hidden');
         overlay.classList.remove('hidden');
         container.classList.add('hidden')
@@ -48,7 +51,6 @@ function seachEvent()
         openModalWithConfirm('no');
     else
         openModalWithConfirm(inputField.value);
-
 }
 close.addEventListener('click',closeModal);
 overlay.addEventListener('click',closeModal);
@@ -56,17 +58,18 @@ searchIcon.addEventListener('click',function()
 {
     seachEvent();
 });
+
 document.addEventListener('keydown',function(event)
 {
-    console.log(event.key);
-    if(event.key === 'Enter')
+    if(event.key==="Escape"&&!modal.classList.contains('hidden'))
+    {
+        console.log(event.key);
+        event.preventDefault();
+        closeModal();
+    }
+    else if(event.key==='Enter')
     {
         event.preventDefault();
         seachEvent();
     }
-});
-document.addEventListener('keydown',function(event)
-{
-    if(event.key&&!modal.classList.contains('hidden'))
-        closeModal();
 });
