@@ -2,13 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const app = express();
-const fs = require('fs');
-const pickle = require('pickle');
+const path=require('path')
 const url = require('url');
 const { PythonShell } = require('python-shell');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'ejs');
+const filePath = path.resolve(__dirname, 'searchBox.html');
 
 const db = mysql.createConnection({
   host: 'localhost',
@@ -25,13 +26,6 @@ db.connect((err) => {
   console.log('Connected to MySQL database as id ' + db.threadId);
 });
 
-function urlToDomain(urlSting) {
-  const parsedUrl = url.parse(urlSting);
-  let domainName = parsedUrl.hostname;
-  if (domainName.startsWith('www.'))
-    domainName = domainName.slice(4); 
-  return domainName;
-}
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/home.html');
@@ -69,43 +63,43 @@ app.post('/signIn', (req, res) => {
     if(result.length===0)
     {
       console.error('wrong');
-      res.redirect('/signIn.html',);
+      res.redirect('/signIn.html');
     }
     else
     {
-      res.redirect('/searchBox.html');
+      res.redirect('/searchBox.html');//D:\Practice\Front-End\Project 1\views
     }
   });
 });
 
-app.get('/search', (req, res) => {
-  res.sendFile(__dirname + '/public/searchBox.html');
+app.get('/searchbox', (req, res) => {
+  res.sendFile(__dirname + 'searchBox');
 });
 
 
-app.post('/search', (req, res) => {
-  let {search} = req.body;
-  let name= urlToDomain(search)
-  console.log(name);
+app.post('/searchbox', async(req, res) => 
+{
+  const {search} = req.body;
+  
+  let options = {
+    mode:"text",
+    pythonOptions:['-u'],
+    scriptPath:"D:/Practice/Front-End/Project 1/",
+    args:[search]
+  };
+ const [output] = await PythonShell.run("loadPickle.py",options,(err,result)=>{
+      if(err)console.error("error");
+      console.log(result);   
+    return result;
+  });
 
-  const ensemble = pickle.loads(('ensemble_model.pkl',"rb"));
-
-    // Load the fitted TF-IDF vectorizer
-    const vectorizer = pickle.loads(('tfidf_vectorizer.pkl',"rb"));
-
-    // Example URL for prediction
-    const newUrl = [url];
-
-    // Transform the new URL using the loaded vectorizer
-    const X_predict = vectorizer.fit_transform(newUrl);
-
-    // Make predictions using the loaded model
-    const predictions = ensemble.predict(X_predict);
-  if(predictions[0]=='bad')
-    console.log(false);
+  let flag;
+  if(output=='bad')
+  flag = 0;
   else
-    console.log(true);
+  flag = 1;
 
+  res.render("searchBox",{message:flag})
 });
 
 const port = process.env.PORT || 3000;

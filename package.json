@@ -11,13 +11,13 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "connector": "^0.0.1",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "jpickle": "^0.4.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.6.1",
     "node-pickle": "^0.0.2",
     "nodemon": "^3.0.1",
-    "pickle": "^0.2.0",
     "python-shell": "^5.0.0",
     "sklearn": "^0.3.0"
   }
