@@ -6,13 +6,14 @@
     <title>HUNT THE URL</title>
     <script src="https://kit.fontawesome.com/c4254e24a8.js" cross origin="anonymous"></script>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap'); 
+     @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap'); 
     *{
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
     }
     body
     {
+    display: flex;
     font-family: 'Source Code Pro';
     font-style: normal;
     font-weight: 200;
@@ -21,13 +22,14 @@
     overflow: hidden;
     background: #232323;
     }
-    /* -----------------------HEADERPART START----------------------- */
+
+
     .header
     {
     display: flex;
     justify-content:start;
     text-align: left;
-    width: 100%;  
+    width: 100%;
     padding: 18px 10px;
     backdrop-filter: blur(5.5px);
     -webkit-backdrop-filter: blur(5.5px);
@@ -38,7 +40,7 @@
     {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     color: #fff;
     } 
     .tag h2
@@ -55,12 +57,10 @@
     color:#232323;
     border-bottom: 2px solid #fff; 
     }
-    /* -----------------------HEADERPART ENDS----------------------- */
-    /* -----------------------MID PART STARTS----------------------- */
     .container
     {
     width: 90%;
-    height: 55%;
+    height: 40%;
     max-width:320px;;
     position: absolute;
     top: 50%;
@@ -72,6 +72,8 @@
     backdrop-filter: blur(5.5px);
     -webkit-backdrop-filter: blur(5.5px);
     background: rgba(255,255,255,0.30);
+    justify-content: center
+    ;
     }
     .container h2
     {
@@ -87,7 +89,7 @@
     display:flex;
     align-items: center;
     }
-    .input-box input
+    .EmailField,.passwordField
     {
     width:100%;
     background: transparent;
@@ -95,16 +97,16 @@
     outline: 0;
     padding: 20px 18px;
     }
-    .input-box i
-    {
-    padding:0 0 0 10px;
-
-    }
     .input-box ::placeholder
     {
     color: #232323;
     font-weight: 500;
     font-size: 15px;
+    }
+    .input-box i
+    {
+    padding:0 0 0 10px;
+    
     }
     .input-box img
     {
@@ -117,66 +119,90 @@
     cursor: pointer;
     }
     input:focus {
-        &::-webkit-input-placeholder {
+    &::-webkit-input-placeholder {
+        color: transparent;
+        -webkit-transition: color 0.2s ease;
+        transition: color 0.2s ease;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
         color: transparent;
         -webkit-transition: color 0.2s ease;
         transition: color 0.2s ease;
         }
-    
-        &:-moz-placeholder { /* Firefox 18- */
-        color: transparent;
-        -webkit-transition: color 0.2s ease;
-        transition: color 0.2s ease;
-        }
-    
+        
         &::-moz-placeholder {  /* Firefox 19+ */
         color: transparent;
         -webkit-transition: color 0.2s ease;
         transition: color 0.2s ease; 
         }
-    
+        
         &:-ms-input-placeholder {  
         color: transparent;
         -webkit-transition: color 0.2s ease;
         transition: color 0.2s ease;
         }
     }
-    .signUp-btn
+    .checker
+    {
+    padding-bottom: 20px;
+    font-weight: 600;
+    color:red;
+    }
+    /* .incorrect
+    {
+    border: 1px solid red ;
+    } */
+
+    .signIn-btn
     {
     display: flex;
     justify-content: space-around;
-    align-items: center; 
-    /* justify-content: center; */
     }
-    .signUp-btn button
+
+    .signIn-btn button
     {
-        justify-content: center;
-        width: 30%;
-        height: 25%;
-        padding: 9px 6px;
-        border: 0;
-        border-radius: 20px;
+    justify-content: center;
+    width: 30%;
+    height: 25%;
+    padding: 9px 6px;
+    border: 0;
+    border-radius: 20px;
     }
-    .signUp-btn button:hover
+    .signIn-btn button:hover
     {
     cursor: pointer;
     color: #fff;
     background-color: #232323;
     }
-    .signUp-btn p{
-        font-size: 15px;
-        font-weight: 600;
+    .signIn-btn p
+    {
+    color:black;
+    font-size: 18px;
+    font-weight: 600;
     }
-    .signUp-btn p:hover
+    .signIn-btn p:hover
     {
     color: #fff;
     cursor: pointer;
     }
-    /* -----------------------MID PART ENDS----------------------- */
+    .new-account
+    {
+    display: flex;
+    padding-top: 10px;
+    justify-content:center;
+    font-weight: 600;
+    }
+    .new-account p:hover
+    {
+    cursor: pointer;
+    color: #fff;
+    }
     .hidden
     {
     display: none;
-    }
+    } 
+   
     </style>
 </head>
 <body>
@@ -184,61 +210,60 @@
         <div class="tag">
             <i class="fa-solid fa-magnifying-glass"></i>
             <h2>SUSPICIOUS  URL DETECTOR</h2>
-            <h2 class="home" onclick="location.href ='/home/home.html';" >HOME</h2>
+            <h2 class="home" onclick="location.href ='/';">HOME</h2>
         </div>
-    </header> 
-    <form action="/signUp" method="post">
+    </header>
+    <div id = 'flag' style="display: none;"> <%= flag %> </div>
+    <form action="/signIn" method="post">
         <div class="container">
-            <h2>SIGN UP</h2>
-        <div class="typebox">
-            <div class="input-box">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" class="first-name" name="firstname" placeholder="FIRST NAME"  required>
+            <h2>SIGN IN</h2>
+            <div class="typebox">
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="text" class="EmailField" name="email" placeholder="EMAIL"  required>
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" class="passwordField " name="password" placeholder="PASSWORD" required>
+                    <img src="eye-close.png " class="eye-btn ">
+                </div>
+                <p class="checker hidden">Email or Password is incorrect</p>
             </div>
-            <div class="input-box">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" class="last-name" name="lastname" placeholder="LAST NAME"  required>
+            <div class="signIn-btn">
+                <button class="submit-btn">SIGN IN</button>
+                <p>Forget password</p>
             </div>
-            <div class="input-box">
-                <i class="fa-solid fa-envelope"></i>
-                <input type="text" class="EmailField" name="email" placeholder="EMAIL"  required>
-            </div>
-            <div class="input-box">
-                <i class="fa-solid fa-lock"></i>
-                <input type="password" class="passwordField" name="password" placeholder="PASSWORD" required>
-                <img src="eye-close.png " class="eye-btn">
+            <div class="new-account">
+                <p onclick="location.href ='signUp';">create a new account? SIGN UP<p>
             </div>
         </div>
-        <div class="signUp-btn">
-            <button class="signUp">SIGN UP</button>
-            <p onclick="location.href ='/signIn.html';"> Already have a account?</p>
-        </div>
-        </div>
-    </div>
-</form>
-<script>
+    </form>
+    <script>
+    var flag1 = document.querySelector('#flag').textContent;
     const EmailField = document.querySelector('.EmailField');
     const passwordField = document.querySelector('.passwordField');
     const eyePng = document.querySelector('.eye-btn');
-    const signUp =document.querySelector('.signUp');
-    let flag = true;
+    const checker = document.querySelector('.checker');
+    const submitBtn= document.querySelector('.submit-btn');
+    const inputBox = document.querySelector('.input-box')
+    if(flag1==0)
+        checker.classList.remove("hidden");
+    
     eyePng.addEventListener('click',function()
     {
-    let img_src = document.querySelector(".eye-btn").src;
-    let src=img_src.split('/')[3]
-    let value = passwordField.value;
-    if(src ==='eye-close.png' && value.length>0)
-    {
+    let img_src = eyePng.src;
+    let src=img_src.split('/')[3];
+     if(src ==='eye-close.png')
+     {
         eyePng.src = 'eye-open.png';
         passwordField.type = 'text';  
-        }
-        else
-        {
+     }
+     else
+    {
         eyePng.src = 'eye-close.png';
         passwordField.type = 'password';
-        }
+    }
     })
-</script>
-    <!-- <script src="/app.js"></script> -->
+    </script>
 </body>
 </html>

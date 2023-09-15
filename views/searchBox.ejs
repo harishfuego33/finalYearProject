@@ -206,7 +206,7 @@
         <div class="tag">
             <i class="fa-solid fa-magnifying-glass"></i>
             <h2>SUSPICIOUS  URL DETECTOR</h2>
-            <h2 class="home" onclick="location.href ='/home.html';" >HOME</h2> 
+            <h2 class="home" onclick="location.href ='/';" >HOME</h2> 
         </div>
     </header> 
     <div id = 'flag' style="display: none;"> <%= message %> </div>
@@ -248,9 +248,8 @@
     
     const openModalWithConfirm =function ()
     {
-        if(inputField.value==''&flag == undefined )
+        if(inputField.value==''& flag == undefined )
         {
-            // console.log('no');
             modal.classList.remove('hidden');
             overlay.classList.remove('hidden');
             container.classList.add('hidden');
@@ -260,7 +259,6 @@
         }
         else if(flag==1)
         {
-            // console.log(1);
             modal.classList.remove('hidden');
             overlay.classList.remove('hidden');
             container.classList.add('hidden');
@@ -270,7 +268,6 @@
         }
         else if(flag==0)
         {
-            // console.log(0);
             modal.classList.remove('hidden');
             overlay.classList.remove('hidden');
             container.classList.add('hidden')

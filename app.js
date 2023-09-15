@@ -7,9 +7,9 @@ const url = require('url');
 const { PythonShell } = require('python-shell');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
-const filePath = path.resolve(__dirname, 'searchBox.html');
+// const filePath = path.resolve(__dirname, 'searchBox.html');
 
 const db = mysql.createConnection({
   host: 'localhost',
@@ -28,11 +28,11 @@ db.connect((err) => {
 
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/home.html');
+  res.render('home');
 });
 
 app.get('/signUp', (req, res) => {
-  res.sendFile(__dirname + '/public/signUp.html');
+  res.render("signUp");
 });
 
 app.post('/signUp', (req, res) => {
@@ -43,12 +43,12 @@ app.post('/signUp', (req, res) => {
       console.error('Error inserting data into MySQL: ' + err.stack);
       return res.status(500).send('Error signing up');
     }
-    res.redirect('/signIn.html');
+    res.render('signIn');
   });
 });
 
 app.get('/signIn', (req, res) => {
-  res.sendFile(__dirname + '/public/signIn.html');
+  res.render('signIn',{flag:1});
 });
 
 app.post('/signIn', (req, res) => {
@@ -62,22 +62,22 @@ app.post('/signIn', (req, res) => {
     }
     if(result.length===0)
     {
-      console.error('wrong');
-      res.redirect('/signIn.html');
+     
+      res.render('signIn',{flag:0});
     }
     else
     {
-      res.redirect('/searchBox.html');//D:\Practice\Front-End\Project 1\views
+      res.render('searchBox',{message:'noouptut'});//D:\Practice\Front-End\Project 1\views
     }
   });
 });
 
 app.get('/searchbox', (req, res) => {
-  res.sendFile(__dirname + 'searchBox');
+  res.render('searchBox');
 });
 
 
-app.post('/searchbox', async(req, res) => 
+app.post('/searchbox', async(req, res)   => 
 {
   const {search} = req.body;
   
