@@ -2,14 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const app = express();
-const path=require('path')
-const url = require('url');
+
 const { PythonShell } = require('python-shell');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
-// const filePath = path.resolve(__dirname, 'searchBox.html');
 
 const db = mysql.createConnection({
   host: 'localhost',
@@ -67,7 +65,7 @@ app.post('/signIn', (req, res) => {
     }
     else
     {
-      res.render('searchBox',{message:'noouptut'});//D:\Practice\Front-End\Project 1\views
+      res.render('searchBox',{message:'noouptut'});
     }
   });
 });
