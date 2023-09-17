@@ -199,6 +199,63 @@
         font-size: 24px;
         border-radius: 5px;
         }
+        #toast-box
+        {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column; 
+            overflow: hidden;
+            padding:10px;
+        }
+        .toast
+        {
+            width: 400px;
+            height: 80px;
+            font-weight: 700;
+            background: #fff;
+            margin: 15px 0;
+            box-shadow: 0 0 20px rgba(0, 0,0,0.3);
+            display: flex;
+            align-items: center;
+            border-radius:10px;
+            position: relative;
+            transform: translateX(100%);
+            animation: moveleft 0.5s linear forwards;
+        }
+        @keyframes moveleft {
+            100%{
+                transform: translateX(0);
+            }
+        }
+        .toast i
+        {
+            margin: 0 18px;
+            font-size: 35px;
+            color: green;
+            
+        }
+        .hidden
+        {
+            display: none;
+        }
+        .toast::after
+        {
+            content:'';
+            position: absolute;
+            left: 0;
+            bottom:0;
+            width: 100%;
+            height: 5px;
+            background:green ;
+            animation: anim 3s linear forwards;
+        }
+        @keyframes anim {   
+            100%{
+                width: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -210,6 +267,8 @@
         </div>
     </header> 
     <div id = 'flag' style="display: none;"> <%= message %> </div>
+    <div id='toast-box'>
+    </div>
     <form action="/searchBox" method="post">
         <div class="container">    
             <h2>ENTER THE URL AND VERIFY THE URL</h2>
@@ -239,6 +298,8 @@
     const searchIcon = document.querySelector('.btn');
     const container = document.querySelector('.container');
     const Output = document.querySelector('.output');
+    const toastBox = document.getElementById('toast-box'); 
+    let toast = document.createElement('div'); 
     const closeModal=function ()
     {
         modal.classList.add('hidden');
@@ -246,6 +307,19 @@
         container.classList.remove('hidden');
     }
     
+    function showToast() 
+    {
+        toast.classList.add('toast'); 
+        toast.innerHTML = '<i class="fa-solid fa-circle-check"></i>Sign In Successfully '; 
+        toastBox.appendChild(toast); 
+    }
+    if(flag==-1)
+    {
+        showToast();
+        setTimeout(()=>{
+            toast.classList.add('hidden');
+        },3000); 
+    }
     const openModalWithConfirm =function ()
     {
         if(inputField.value==''& flag == undefined )
@@ -274,6 +348,7 @@
             modal.style.background="linear-gradient(326deg, #bd4f6c 0%, #d7816a 74%)";
             Output.textContent = 'LOOKS LIKE SUSPICIOUS🧐';   
         }
+        
     }
         openModalWithConfirm();
 

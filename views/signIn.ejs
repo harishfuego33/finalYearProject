@@ -149,10 +149,6 @@
     font-weight: 600;
     color:red;
     }
-    /* .incorrect
-    {
-    border: 1px solid red ;
-    } */
 
     .signIn-btn
     {
@@ -198,10 +194,68 @@
     cursor: pointer;
     color: #fff;
     }
-    .hidden
-    {
-    display: none;
-    } 
+    
+    #toast-box
+        {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column; 
+            overflow: hidden;
+            padding:10px;
+        }
+        .toast
+        {
+            width: 400px;
+            height: 80px;
+            font-weight: 700;
+            background: #fff;
+            margin: 15px 0;
+            box-shadow: 0 0 20px rgba(0, 0,0,0.3);
+            display: flex;
+            align-items: center;
+            border-radius:10px;
+            position: relative;
+            transform: translateX(100%);
+            animation: moveleft 0.5s linear forwards;
+        }
+        @keyframes moveleft {
+            100%{
+                transform: translateX(0);
+            }
+        }
+        .toast i
+        {
+            margin: 0 18px;
+            font-size: 35px;
+            color:red;
+            
+        }
+        .hidden
+        {
+            display: none;
+        }
+        .toast::after
+        {
+            content:'';
+            position: absolute;
+            left: 0;
+            bottom:0;
+            width: 100%;
+            height: 5px;
+            background:red ;
+            animation: anim 3s linear forwards;
+        }
+        @keyframes anim {   
+            100%{
+                width: 0;
+            }
+        }
+        .hidden
+        {
+        display: none;
+        } 
    
     </style>
 </head>
@@ -214,6 +268,8 @@
         </div>
     </header>
     <div id = 'flag' style="display: none;"> <%= flag %> </div>
+    <div id='toast-box'>
+    </div>
     <form action="/signIn" method="post">
         <div class="container">
             <h2>SIGN IN</h2>
@@ -227,7 +283,6 @@
                     <input type="password" class="passwordField " name="password" placeholder="PASSWORD" required>
                     <img src="eye-close.png " class="eye-btn ">
                 </div>
-                <p class="checker hidden">Email or Password is incorrect</p>
             </div>
             <div class="signIn-btn">
                 <button class="submit-btn">SIGN IN</button>
@@ -246,8 +301,22 @@
     const checker = document.querySelector('.checker');
     const submitBtn= document.querySelector('.submit-btn');
     const inputBox = document.querySelector('.input-box')
+    const toastBox = document.getElementById('toast-box'); 
+    let toast = document.createElement('div'); 
+    function showToast() 
+    {
+        toast.classList.add('toast'); 
+        toast.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Email or Password is incorrect '; 
+        toastBox.appendChild(toast); 
+    }
     if(flag1==0)
-        checker.classList.remove("hidden");
+    {
+        showToast();
+        setTimeout(()=>{
+            toast.classList.add('hidden');
+        },3000); 
+
+    }
     
     eyePng.addEventListener('click',function()
     {

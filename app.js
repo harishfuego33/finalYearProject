@@ -65,7 +65,7 @@ app.post('/signIn', (req, res) => {
     }
     else
     {
-      res.render('searchBox',{message:'noouptut'});
+      res.render('searchBox',{message:-1});
     }
   });
 });
@@ -91,10 +91,10 @@ app.post('/searchbox', async(req, res)   =>
     return result;
   });
 
-  let flag;
+  let flag ;
   if(output=='bad')
   flag = 0;
-  else
+  else if(output=='good')
   flag = 1;
 
   res.render("searchBox",{message:flag})
