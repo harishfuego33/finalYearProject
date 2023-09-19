@@ -2,13 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const app = express();
-
 const { PythonShell } = require('python-shell');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
+// connecting to database
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
