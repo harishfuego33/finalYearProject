@@ -1,7 +1,6 @@
 {
-  "name": "app.js",
+  "name": "app",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
@@ -21,5 +20,6 @@
     "pg": "^8.11.3",
     "python-shell": "^5.0.0",
     "sklearn": "^0.3.0"
-  }
+  },
+  "description": ""
 }
