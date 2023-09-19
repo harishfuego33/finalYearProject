@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 
 // connecting to database
 //PGPASSWORD=jeSUoHOGGrZRFJxU5qfLB8asukWl8BbX psql -h dpg-cjvu1695mpss73ba0qp0-a.oregon-postgres.render.com -U urldatabse_user urldatabse
-const db = new db({
+const db = new pg({
   user:"urldatabse_user",
   host:"dpg-cjvu1695mpss73ba0qp0-a",
   database:"urldatabse",
