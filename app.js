@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql2');
+const { pg } = require('pg'); 
 const app = express();
 const { PythonShell } = require('python-shell');
 
@@ -9,11 +9,13 @@ app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
 // connecting to database
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password :"root",
-  database: 'url_project'
+//PGPASSWORD=jeSUoHOGGrZRFJxU5qfLB8asukWl8BbX psql -h dpg-cjvu1695mpss73ba0qp0-a.oregon-postgres.render.com -U urldatabse_user urldatabse
+const db = new db({
+  user:"urldatabse_user",
+  host:"dpg-cjvu1695mpss73ba0qp0-a",
+  database:"urldatabse",
+  password:"jeSUoHOGGrZRFJxU5qfLB8asukWl8BbX",
+  port:"5432"
 });
 
 db.connect((err) => {
