@@ -3,19 +3,16 @@ const bodyParser = require('body-parser');
 const { Pool} = require('pg');
 const app = express();
 const { PythonShell } = require('python-shell');
+const {config} = require('dotenv');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
 // connecting to database
-//PGPASSWORD=jeSUoHOGGrZRFJxU5qfLB8asukWl8BbX psql -h dpg-cjvu1695mpss73ba0qp0-a.oregon-postgres.render.com -U urldatabse_user urldatabse
 const pool = new Pool({
-  user:"urldatabse_user",
-  host:"dpg-cjvu1695mpss73ba0qp0-a",
-  database:"urldatabse",
-  password:"jeSUoHOGGrZRFJxU5qfLB8asukWl8BbX",
-  port:"5432"
+  connectionString: process.env.DATABASE_URL,
+  ssl:true  
 });
 
 pool.connect((err) => {
