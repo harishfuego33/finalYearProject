@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 // connecting to database
 config()
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL+"?sslmode=require",
 });
 
 pool.connect((err) => {
