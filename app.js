@@ -70,7 +70,7 @@ app.post('/signIn', (req, res) => {
 });
 
 app.get('/searchbox', (req, res) => {
-  res.render('searchBox',{message :" "});
+  res.render('searchBox',{message :""});
 });
 
 
