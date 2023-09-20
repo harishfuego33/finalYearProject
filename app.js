@@ -1,6 +1,7 @@
+import pg from 'pg';
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Pool} = require('pg');
+const { Pool} = pg;
 const app = express();
 const { PythonShell } = require('python-shell');
 const {config} = require('dotenv');
@@ -12,8 +13,8 @@ app.set('view engine', 'ejs');
 // connecting to database
 config()
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL+"?sslmode=require",
-});
+  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+})
 
 pool.connect((err) => {
   if (err) {
