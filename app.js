@@ -34,7 +34,7 @@ app.get('/signUp', (req, res) => {
 
 app.post('/signUp', (req, res) => {
   const { firstname, lastname, email, password } = req.body;
-  const sql = `INSERT INTO signup (firstname, lastname, email, password) VALUES (?, ?, ?, ?)`;
+  const sql = `INSERT INTO user (first_name ,last_name , email, password) VALUES (?, ?, ?, ?)`;
   pool.query(sql, [firstname, lastname, email, password], (err, result) => {
     if (err) {
       console.error('Error inserting data into pg: ' + err.stack);
@@ -50,7 +50,7 @@ app.get('/signIn', (req, res) => {
 
 app.post('/signIn', (req, res) => {
   const { email, password } = req.body;
-  const sql = `SELECT email FROM signup WHERE email = ? AND password = ?`;
+  const sql = `SELECT email FROM user WHERE email = ? AND password = ?`;
   pool.query(sql, [email,password], (err, result) => {
     if (err) 
     {
