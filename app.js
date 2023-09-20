@@ -1,4 +1,3 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require("pg");
@@ -78,11 +77,10 @@ app.get('/searchbox', (req, res) => {
 app.post('/searchbox', async(req, res)   => 
 {
   const {search} = req.body;
-  
   let options = {
     mode:"text",
     pythonOptions:['-u'],
-    scriptPath:"D:/Practice/Front-End/Project 1/",
+    scriptPath:'loadPickle.py',//"D:/Practice/Front-End/Project 1/",
     args:[search]
   };
  const [output] = await PythonShell.run("loadPickle.py",options,(err,result)=>{
