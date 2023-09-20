@@ -1,7 +1,7 @@
-import pg from 'pg';
+
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Pool} = pg;
+const { Pool } = require("pg");
 const app = express();
 const { PythonShell } = require('python-shell');
 const {config} = require('dotenv');
