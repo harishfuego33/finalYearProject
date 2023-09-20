@@ -10,16 +10,17 @@ app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
 // connecting to database
+config()
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 });
 
 pool.connect((err) => {
   if (err) {
-    console.error('Error connecting to MySQL database: ' + err.stack);
+    console.error('Error connecting to pg database: ' + err.stack);
     return;
   }
-  console.log('Connected to MySQL database as id ' + pool.threadId);
+  console.log('Connected to pg database as id ' + pool.threadId);
 });
 
 
@@ -36,7 +37,7 @@ app.post('/signUp', (req, res) => {
   const sql = `INSERT INTO signup (firstname, lastname, email, password) VALUES (?, ?, ?, ?)`;
   pool.query(sql, [firstname, lastname, email, password], (err, result) => {
     if (err) {
-      console.error('Error inserting data into MySQL: ' + err.stack);
+      console.error('Error inserting data into pg: ' + err.stack);
       return res.status(500).send('Error signing up');
     }
     res.render('signIn');
@@ -53,7 +54,7 @@ app.post('/signIn', (req, res) => {
   pool.query(sql, [email,password], (err, result) => {
     if (err) 
     {
-      console.error('Error getting data into MySQL: ' + err.message);
+      console.error('Error getting data into pgL: ' + err.message);
       return res.status(500).send('Error signing up');
     }
     if(result.length===0)
