@@ -1,19 +1,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Pool } = require("pg");
+// const { Pool } = require("pg");
+const mysql = require('mysql2');
 const app = express();
 const { PythonShell } = require('python-shell');
-const {config} = require('dotenv');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
 // connecting to database
-config()
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
-})
+// config()
+// const pool = new Pool({
+//   connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+// })
+const pool = mysql.createConnection(
+  {
+    locahost:"locahost",
+    user:"root",
+    password:"root",
+    database:"url_project",
+  }
+);
 
 pool.connect((err) => {
   if (err) {
@@ -80,7 +88,7 @@ app.post('/searchbox', async(req, res)   =>
   let options = {
     mode:"text",
     pythonOptions:['-u'],
-    //scriptPath:'loadPickle.py',//"D:/Practice/Front-End/Project 1/",
+    scriptPath:"D:/Practice/Front-End/Project 1/",
     args:[search]
   };
  const [output] = await PythonShell.run("loadPickle.py",options,(err,result)=>{
